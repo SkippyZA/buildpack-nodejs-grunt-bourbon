@@ -181,7 +181,7 @@ export CPPPATH="$INCLUDE_PATH"
 echo "-----> Installing dependencies with npm"
 #run_npm "install --production"
 run_npm "install"
-# run_npm "rebuild"
+run_npm "rebuild"
 echo "Dependencies installed" | indent
 
 echo "-----> Building runtime environment"
@@ -189,7 +189,7 @@ mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
-  make sure that grunt and grunt-cli are installed locally
+  # make sure that grunt and grunt-cli are installed locally
   run_npm "install grunt-cli"
   run_npm "install grunt"
 
