@@ -189,11 +189,13 @@ mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
+  echo "     > run_npm 'install'"
+  run_npm "install"
   # make sure that grunt and grunt-cli are installed locally
-  echo "     > run_npm 'install grunt-cli'"
-  run_npm "install grunt-cli"
-  echo "     > run_npm 'install grunt'"
-  run_npm "install grunt"
+  # echo "     > run_npm 'install grunt-cli'"
+  # run_npm "install grunt-cli"
+  # echo "     > run_npm 'install grunt'"
+  # run_npm "install grunt"
 
   echo "-----> Found Gruntfile, running grunt $GRUNT_TASKS task(s)"
   $BUILD_DIR/node_modules/.bin/grunt $GRUNT_TASKS
