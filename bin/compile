@@ -170,6 +170,8 @@ echo "-----> Installing Bourbon/Sass"
 export GEM_HOME=$BUILD_DIR/.gem/ruby/1.9.1
 PATH="$GEM_HOME/bin:$PATH"
 HOME=$BUILD_DIR gem install bourbon sass --no-rdoc --no-ri
+echo "-----> Linking SASS to local bin"
+ln -s $GEM_HOM/bin/sass /usr/local/bin/sass
 
 # setting up paths for building
 PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
