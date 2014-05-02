@@ -171,7 +171,7 @@ export GEM_HOME=$BUILD_DIR/.gem/ruby/1.9.1
 PATH="$GEM_HOME/bin:$PATH"
 HOME=$BUILD_DIR gem install bourbon sass --no-rdoc --no-ri
 echo "-----> Linking SASS to local bin"
-ln -s $GEM_HOM/bin/sass /usr/local/bin/sass
+ln -s $GEM_HOME/bin/sass /usr/local/bin/sass
 
 # setting up paths for building
 PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
@@ -208,7 +208,7 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   # $BUILD_DIR/node_modules/.bin/grunt $GRUNT_TASKS --force
   # $BUILD_DIR/node_modules/.bin/grunt build --gruntfile=$BUILD_DIR/Gruntfile.js --force
   $BUILD_DIR/node_modules/.bin/grunt heroku:$NODE_ENV --gruntfile=$BUILD_DIR/Gruntfile.js --force
-  
+
   
 else
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
