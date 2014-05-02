@@ -198,6 +198,7 @@ fi
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
   # make sure that grunt and grunt-cli are installed locally
+  echo "-----> Installing Grunt"
   run_npm "install grunt-cli"
   run_npm "install grunt"
 
