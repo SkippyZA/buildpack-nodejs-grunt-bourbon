@@ -192,7 +192,7 @@ echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$GEM_HOME/bin:\$PATH\""
 if [ -f $BUILD_DIR/bower.json ]; then
   echo "-----> Found bower.json, running bower install"
   
-  run_npm "install bower" | indent
+  run_npm "install bower"
   $BUILD_DIR/node_modules/.bin/bower install --allow-root | indent
 fi
 
@@ -201,9 +201,11 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   run_npm "install grunt-cli"
   run_npm "install grunt"
 
-  echo "-----> Found Gruntfile, running grunt $GRUNT_TASKS task(s)"
-  $BUILD_DIR/node_modules/.bin/grunt $GRUNT_TASKS --force
+  echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task(s)"
+  # $BUILD_DIR/node_modules/.bin/grunt $GRUNT_TASKS --force
   # $BUILD_DIR/node_modules/.bin/grunt build --gruntfile=$BUILD_DIR/Gruntfile.js --force
+  $BUILD_DIR/node_modules/.bin/grunt heroku:$NODE_ENV --gruntfile=$BUILD_DIR/Gruntfile.js --force
+  
 else
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
